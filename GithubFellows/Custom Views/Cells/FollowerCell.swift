@@ -46,4 +46,6 @@ class FollowerCell: UICollectionViewCell {
             usernameLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
+    
+    //Flowlayout: how your collection view looks eg: 3 columns
 }
