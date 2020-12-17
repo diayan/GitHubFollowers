@@ -8,7 +8,12 @@
 
 import Foundation
 
-struct Follower: Codable {
+struct Follower: Codable, Hashable {
     var login: String
     var avatarUrl: String
+    
+    //If we wanted to hash only login this is what we would do or avatarUrl
+//    func hash(into hasher: inout Hasher) {
+//        hasher.combine(login)
+//    }
 }
