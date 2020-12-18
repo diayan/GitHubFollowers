@@ -6,11 +6,14 @@
 //  Copyright © 2020 Diayan Siat. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class NetworkManager {
     static let shared   = NetworkManager() //initialize network manager
-    let baseURL         = "https://api.github.com/users/"
+    private let baseURL         = "https://api.github.com/users/"
+    //implementing caching in for our images
+    let cache           = NSCache<NSString, UIImage>()
+    
     
     //restrict it to only one instance
     private init() {}

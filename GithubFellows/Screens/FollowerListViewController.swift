@@ -11,9 +11,7 @@ import UIKit
 class FollowerListViewController: UIViewController {
     
     //collection view could have more than one section ie the divisions in the collection view
-    enum Section {
-        case main
-    }
+    enum Section {case main}
     
     var username: String!
     var followers: [Follower] = []
@@ -40,27 +38,19 @@ class FollowerListViewController: UIViewController {
     }
     
     func configureCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createThreeColumnFlowLayout())
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(in: view))
         view.addSubview(collectionView)
         collectionView.backgroundColor  = .systemBackground
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseId)
     }
     
-    func createThreeColumnFlowLayout() -> UICollectionViewFlowLayout {
-        let width                       = view.bounds.width //width of device screen
-        let padding: CGFloat            = 12
-        let minimumItemSpacing: CGFloat = 10
-        let availableWidth              = width - (padding * 2) - (minimumItemSpacing * 2)
-        let itemWidth                   = availableWidth / 3
-        
-        let flowLayout                  = UICollectionViewFlowLayout()
-        flowLayout.sectionInset         = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
-        flowLayout.itemSize             = CGSize(width: itemWidth, height: itemWidth + 40)
-        return flowLayout
-    }
+
     
     func getFollowers() {
-        NetworkManager.shared.getFollowers(for: username, page: 1) { result in
+        //[weak self] is a called a capture list
+        NetworkManager.shared.getFollowers(for: username, page: 1) { [weak self] result in
+            //anytime you make something weak, it becomes an optional
+            guard let self = self else {return}
             switch result{
             case .success(let followers):
                 self.followers = followers
@@ -68,7 +58,6 @@ class FollowerListViewController: UIViewController {
 
             case .failure(let error ):
                 self.presentGFAlertOnMainThread(title: "Bad stuff happened", message: error.rawValue, buttonTitle: "Ok")
-                
             }
         }
     }

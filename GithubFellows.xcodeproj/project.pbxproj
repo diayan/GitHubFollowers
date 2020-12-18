@@ -27,6 +27,7 @@
 		B2DDED2A258903C20007EEC3 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DDED29258903C20007EEC3 /* ErrorMessage.swift */; };
 		B2DDED2F258A5B330007EEC3 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DDED2E258A5B330007EEC3 /* FollowerCell.swift */; };
 		B2DDED33258A5C1B0007EEC3 /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DDED32258A5C1B0007EEC3 /* GFAvatarImageView.swift */; };
+		B2DDED37258B728F0007EEC3 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DDED36258B728F0007EEC3 /* UIHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		B2DDED29258903C20007EEC3 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		B2DDED2E258A5B330007EEC3 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		B2DDED32258A5C1B0007EEC3 /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
+		B2DDED36258B728F0007EEC3 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				B2DDED29258903C20007EEC3 /* ErrorMessage.swift */,
+				B2DDED36258B728F0007EEC3 /* UIHelper.swift */,
 			);
 			path = Uitilities;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				B2A09BBE255AD73B002235A3 /* GFTitleLabel.swift in Sources */,
 				B2A09BB4255A792A002235A3 /* SearchViewController.swift in Sources */,
 				B2DDED2A258903C20007EEC3 /* ErrorMessage.swift in Sources */,
+				B2DDED37258B728F0007EEC3 /* UIHelper.swift in Sources */,
 				B241C3EF257FA593006E7B10 /* NetworkManager.swift in Sources */,
 				B2A09BA02559CE3E002235A3 /* AppDelegate.swift in Sources */,
 				B2A09BA22559CE3E002235A3 /* SceneDelegate.swift in Sources */,
