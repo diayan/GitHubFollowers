@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B238A44A258E34D2006A7340 /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B238A449258E34D2006A7340 /* GFEmptyStateView.swift */; };
+		B238A44E258E5890006A7340 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B238A44D258E5890006A7340 /* UserInfoViewController.swift */; };
 		B241C3E7257EF940006E7B10 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241C3E6257EF940006E7B10 /* Follower.swift */; };
 		B241C3EB257EFA0E006E7B10 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241C3EA257EFA0E006E7B10 /* User.swift */; };
 		B241C3EF257FA593006E7B10 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241C3EE257FA593006E7B10 /* NetworkManager.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		B238A449258E34D2006A7340 /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
+		B238A44D258E5890006A7340 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		B241C3E6257EF940006E7B10 /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		B241C3EA257EFA0E006E7B10 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B241C3EE257FA593006E7B10 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				B2A09BB3255A792A002235A3 /* SearchViewController.swift */,
 				B2A09BB5255A8729002235A3 /* FavoritListViewController.swift */,
 				B2A09BBB255AC84B002235A3 /* FollowerListViewController.swift */,
+				B238A44D258E5890006A7340 /* UserInfoViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2A09BC2255AFAF6002235A3 /* GFAlertViewController.swift in Sources */,
+				B238A44E258E5890006A7340 /* UserInfoViewController.swift in Sources */,
 				B2A09BBA255AB15C002235A3 /* GFTextField.swift in Sources */,
 				B2A09BB6255A8729002235A3 /* FavoritListViewController.swift in Sources */,
 				B2A09BB8255AAC04002235A3 /* GFButton.swift in Sources */,
