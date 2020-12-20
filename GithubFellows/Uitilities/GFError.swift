@@ -1,8 +1,8 @@
 //
-//  ErrorMessage.swift
+//  GFError.swift
 //  GithubFellows
 //
-//  Created by diayan siat on 15/12/2020.
+//  Created by diayan siat on 19/12/2020.
 //  Copyright © 2020 Diayan Siat. All rights reserved.
 //
 
