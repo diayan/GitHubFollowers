@@ -13,6 +13,7 @@ class GFButton: UIButton {
     //override since we're going to customize
     override init(frame: CGRect) {
         super.init(frame: frame) //calls the super UIButton method
+        configure()
     }
     
     //this is what handles initialization via storyboard. So it should be used to handle storyboard cases 
@@ -33,5 +34,10 @@ class GFButton: UIButton {
         setTitleColor(.white, for: .normal)
         titleLabel?.font      = UIFont.preferredFont(forTextStyle: .headline)
         translatesAutoresizingMaskIntoConstraints = false //add view to a view hierachy that uses autolayout
+    }
+    
+    func set(backgroundColor: UIColor, title: String) {
+        self.backgroundColor  = backgroundColor
+        setTitle(title, for: .normal)
     }
 }

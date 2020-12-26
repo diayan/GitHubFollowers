@@ -37,5 +37,22 @@ extension String {
     func removeWhitespaces() -> String {
         return components(separatedBy: .whitespaces).joined()
     }
+    
+    
+    //very handy function for date conversion!! 
+    func convertToDate() -> Date? {
+        let dateFormatter        = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.locale     = Locale(identifier: "en_GH")
+        dateFormatter.timeZone   = .current
+        
+        return dateFormatter.date(from: self)
+    }
+    
+    //combine convertToDate() and convertToMonthYearFormat() extensions to return a string format of the date we wanted
+    func convertToDisplayFormat() -> String {
+        guard let date = self.convertToDate() else {return "N/A"}
+        return date.convertToMonthYearFormat()
+    }
 }
 
