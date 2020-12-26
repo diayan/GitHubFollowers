@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FollowerListVCDelegate: class {
+    func didRequestFollowers(for username: String)
+}
+
 class FollowerListViewController: UIViewController {
     
     //collection view could have more than one section ie the divisions in the collection view
@@ -119,6 +123,7 @@ extension FollowerListViewController: UICollectionViewDelegate {
         let follower        = activeFollowers[indexPath.item]
         let desVC           = UserInfoViewController()
         desVC.username      = follower.login
+        desVC.delegate      = self
         let navController   = UINavigationController(rootViewController: desVC)
         present(navController, animated: true)
         }
@@ -136,5 +141,18 @@ extension FollowerListViewController: UISearchResultsUpdating, UISearchBarDelega
         //when a user clicks on cancel, call the followers list again!
         updateData(on: followers)
         isSearching        = false //set isSearching to false onece a user cancels
+    }
+}
+
+extension FollowerListViewController: FollowerListVCDelegate {
+    func didRequestFollowers(for username: String) {
+        // get followers for user
+        self.username     = username
+        title             = username
+        page              = 1 //reset page number since it's a brand new member
+        followers.removeAll()
+        filteredFollowers.removeAll()
+        collectionView.setContentOffset(.zero, animated: true) //scroll collection view back to the top
+        getFollowers(username: username, page: page)
     }
 }
