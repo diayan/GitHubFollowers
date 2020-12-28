@@ -14,12 +14,12 @@ fileprivate var containerView: UIView!
 //NB: you can't create properties within the scope of an extension
 extension UIViewController {
     
-    func presentGFAlertOnMainThread(title: String, message: String, buttonTitle: String){
+    func presentGFAlertOnMainThread(title: String, message: String, buttonTitle: String) {
         DispatchQueue.main.async {
             let alertVC = GFAlertViewController(title: title, message: message, buttonTitle: buttonTitle)
-            alertVC.modalPresentationStyle = .overFullScreen
-            alertVC.modalTransitionStyle = .crossDissolve
-            self.present(alertVC, animated: true) //don't have to use weak self in GCD closures 
+            alertVC.modalPresentationStyle  = .overFullScreen
+            alertVC.modalTransitionStyle    = .crossDissolve
+            self.present(alertVC, animated: true)//don't have to use weak self in GCD closures
         }
     }
     

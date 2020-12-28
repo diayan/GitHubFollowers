@@ -25,7 +25,7 @@ class GFAlertViewController: UIViewController {
         
         self.alertTitle  = title
         self.message     = message
-        self.buttonTitle = title
+        self.buttonTitle = buttonTitle
     }
     
     required init?(coder: NSCoder) {
@@ -61,7 +61,7 @@ class GFAlertViewController: UIViewController {
     func configureTitleLabel() {
         containerView.addSubview(titleLabel)
         
-        titleLabel.text = title ?? "Something went wrong"
+        titleLabel.text = alertTitle ?? "Something went wrong"
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: padding),
@@ -73,7 +73,7 @@ class GFAlertViewController: UIViewController {
     
     func configureActionButton() {
         containerView.addSubview(actionButton)
-        actionButton.setTitle("Ok", for: .normal)
+        actionButton.setTitle(buttonTitle ?? "Ok", for: .normal)
         
         actionButton.addTarget(self, action: #selector(dismisVC), for: .touchUpInside)
         
