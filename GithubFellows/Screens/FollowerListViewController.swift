@@ -12,7 +12,7 @@ protocol FollowerListVCDelegate: class {
     func didRequestFollowers(for username: String)
 }
 
-class FollowerListViewController: UIViewController {
+class FollowerListViewController: GFDataLoadingVC {
     
     //collection view could have more than one section ie the divisions in the collection view
     enum Section {case main}
