@@ -22,11 +22,10 @@ class GFButton: UIButton {
     }
     
     //custom initializer to set background color and title
-    init(backgroundColor: UIColor, title: String){
-        super.init(frame: .zero) //set the frame to zero cause we will be setting the height and width in autolayout
+    convenience init(backgroundColor: UIColor, title: String){
+        self.init(frame: .zero) //set the frame to zero cause we will be setting the height and width in autolayout
         self.backgroundColor  = backgroundColor
         self.setTitle(title, for: .normal)
-        configure()
     }
     
     private func configure() {
