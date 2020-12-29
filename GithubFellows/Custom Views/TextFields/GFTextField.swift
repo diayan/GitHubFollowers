@@ -36,6 +36,7 @@ class GFTextField: UITextField {
         backgroundColor    = .tertiarySystemBackground
         autocorrectionType = .no
         returnKeyType      = .google
+        clearButtonMode    = .whileEditing //shows x button that can be used to quickly clear text 
         placeholder        = "Enter a username"
     }
 }
