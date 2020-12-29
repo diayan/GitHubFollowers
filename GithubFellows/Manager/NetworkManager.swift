@@ -86,8 +86,9 @@ class NetworkManager {
             
             do {
                 let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase //converts json from snake case to camelcase
-                let user = try decoder.decode(User.self, from: data)
+                decoder.keyDecodingStrategy  = .convertFromSnakeCase //converts json from snake case to camelcase
+                decoder.dateDecodingStrategy = .iso8601 //converts string date to standard date 
+                let user                     = try decoder.decode(User.self, from: data)
                 completed(.success(user))
             } catch {
                 completed(.failure(.invalidData))
