@@ -97,4 +97,35 @@ class NetworkManager {
         //this starts the whole network process
         task.resume()
     }
+    
+    //downloads image into an imageview
+    func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
+        
+        let cacheKey = NSString(string: urlString)
+        //check if image exists, if it does, don't do a network call to download
+        if let image = cache.object(forKey: cacheKey) {
+            completed(image)
+            return
+        }
+        
+        guard let url       = URL(string: urlString) else {
+            completed(nil)
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            //A combined guard let to handle a nil response for all cases. this prevents repeition
+            guard let self        = self,
+                  error           == nil,
+                  let response    = response as? HTTPURLResponse, response.statusCode == 200,
+                  let data        = data,
+                  let image       = UIImage(data: data) else {
+                completed(nil)
+                return
+            }
+            self.cache.setObject(image, forKey: cacheKey) //put image in cache so that the next time it is not downloaded
+            completed(image)
+        }
+        task.resume()
+    }
 }
