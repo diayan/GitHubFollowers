@@ -58,8 +58,7 @@ class GFItemInfoViewController: UIViewController {
     private func layoutUI() {
         let padding: CGFloat = 20
         //itemvInfoViewOne and itemInfoViewTwo will be added to the stackview so no need to add them to view itself
-        view.addSubview(stackView)
-        view.addSubview(actionButton)
+        view.addSubviews(stackView, actionButton)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         

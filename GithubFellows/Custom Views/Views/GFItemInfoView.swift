@@ -28,9 +28,7 @@ class GFItemInfoView: UIView {
     }
     
     private func configure() {
-        addSubview(titleLabel)
-        addSubview(countLablel)
-        addSubview(symbolImageView)
+        addSubviews(titleLabel, countLablel, symbolImageView)
         
         //it is done for only imageview because the others have been done in thir sub-classes
         symbolImageView.translatesAutoresizingMaskIntoConstraints = false
