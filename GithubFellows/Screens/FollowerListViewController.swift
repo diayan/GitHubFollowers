@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol FollowerListVCDelegate: class {
-    func didRequestFollowers(for username: String)
-}
-
 class FollowerListViewController: GFDataLoadingVC {
     
     //collection view could have more than one section ie the divisions in the collection view
@@ -193,7 +189,7 @@ extension FollowerListViewController: UISearchResultsUpdating {
 //    }
 }
 
-extension FollowerListViewController: FollowerListVCDelegate {
+extension FollowerListViewController: UserInfoVCDelegate {
     func didRequestFollowers(for username: String) {
         // get followers for user
         self.username     = username

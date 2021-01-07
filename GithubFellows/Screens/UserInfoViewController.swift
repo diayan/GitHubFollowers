@@ -9,9 +9,9 @@
 import UIKit
 
 protocol UserInfoVCDelegate: class {
-    func didTapGitHubProfile(for user: User)
-    func didTapGetFollowers(for user: User)
+    func didRequestFollowers(for username: String)
 }
+
 
 class UserInfoViewController: UIViewController {
     
@@ -22,7 +22,7 @@ class UserInfoViewController: UIViewController {
     var itemViews: [UIView] = []
     
     var  username: String!
-    weak var delegate: FollowerListVCDelegate!
+    weak var delegate: UserInfoVCDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,6 @@ class UserInfoViewController: UIViewController {
     }
     
     func configureUIElements(with user: User) {
-        
         let repoItemVC          = GFRepoItemViewController(user: user)
         repoItemVC.delegate     = self
         let followerItemVC      = GFFollowerItemViewController(user: user)
@@ -92,7 +91,7 @@ class UserInfoViewController: UIViewController {
             itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight),
             
             dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: padding),
-            dateLabel.heightAnchor.constraint(equalToConstant: 18)
+            dateLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
@@ -104,7 +103,7 @@ class UserInfoViewController: UIViewController {
     }
 }
 
-extension UserInfoViewController: UserInfoVCDelegate {
+extension UserInfoViewController: GFRepoItemVCDelegate {
     func didTapGitHubProfile(for user: User) {
         //show safari Viewcontroller
         guard let url = URL(string: user.htmlUrl) else {
@@ -113,7 +112,9 @@ extension UserInfoViewController: UserInfoVCDelegate {
         }
         presentSafariVC(with: url)
     }
-    
+}
+
+extension UserInfoViewController: GFFollowerItemVCDelegate {
     func didTapGetFollowers(for user: User) {
         //dismiss current vc
         //tell follower list screen the new user

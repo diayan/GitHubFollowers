@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol GFRepoItemVCDelegate: class {
+    func didTapGitHubProfile(for user: User)
+}
+
 class GFRepoItemViewController: GFItemInfoViewController {
-    
+    weak var delegate: GFRepoItemVCDelegate! //delegates should always be weak to avoid the retain cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureItems()

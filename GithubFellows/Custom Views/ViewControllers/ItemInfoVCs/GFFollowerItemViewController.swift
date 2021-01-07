@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol GFFollowerItemVCDelegate: class {
+    func didTapGetFollowers(for user: User)
+}
+
 class GFFollowerItemViewController: GFItemInfoViewController {
-    
+    weak var delegate: GFFollowerItemVCDelegate! //delegates should always be weak to avoid the retain cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureItems()
