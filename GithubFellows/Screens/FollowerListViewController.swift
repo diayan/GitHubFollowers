@@ -23,7 +23,7 @@ class FollowerListViewController: GFDataLoadingVC {
     var page                          = 1
     var hasMoreFollowers              = true
     var isSearching                   = false
-    
+    var isLoadingMoreFollowers        = false
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     
@@ -97,7 +97,6 @@ class FollowerListViewController: GFDataLoadingVC {
     func configureSearchController() {
         let searchController                                  = UISearchController()
         searchController.searchResultsUpdater                 = self
-        searchController.searchBar.delegate                   = self
         searchController.searchBar.placeholder                = "Search for a username"
         searchController.obscuresBackgroundDuringPresentation = false //remove overlay on controller
         navigationItem.searchController                       = searchController
@@ -105,10 +104,11 @@ class FollowerListViewController: GFDataLoadingVC {
     
     func getFollowers(username: String, page: Int) {
         showLoadingView()
+        isLoadingMoreFollowers  = true
         //[weak self] is a called a capture list
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
             //anytime you make something weak, it becomes an optional
-            guard let self = self else {return}
+            guard let self      = self else {return}
             self.dismissLoadingView()
             switch result{
             case .success(let followers):
@@ -126,6 +126,7 @@ class FollowerListViewController: GFDataLoadingVC {
             case .failure(let error ):
                 self.presentGFAlertOnMainThread(title: "Bad stuff happened", message: error.rawValue, buttonTitle: "Ok")
             }
+            self.isLoadingMoreFollowers = false
         }
     }
     
@@ -151,8 +152,10 @@ extension FollowerListViewController: UICollectionViewDelegate {
         let contentHeight = scrollView.contentSize.height
         let height        = scrollView.frame.size.height
         
+        
         if offsetY > contentHeight - height {
-            guard hasMoreFollowers else {return}
+            //check if user has more followers and previous request is finished before incrementing the page 
+            guard hasMoreFollowers, !isLoadingMoreFollowers else {return}
             page += 1
             getFollowers(username: username, page: page)
         }
@@ -169,19 +172,25 @@ extension FollowerListViewController: UICollectionViewDelegate {
         }
 }
 
-extension FollowerListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+extension FollowerListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let filter  = searchController.searchBar.text, !filter.isEmpty else {return} //check that the search bar is not empty
+        guard let filter  = searchController.searchBar.text, !filter.isEmpty else {
+            filteredFollowers.removeAll()
+            updateData(on: followers)
+            isSearching   = false
+            return
+        } //check that the search bar is not empty
         isSearching       = true //change isSearching to true
         filteredFollowers = followers.filter{$0.login.lowercased().contains(filter.lowercased())}
         updateData(on: filteredFollowers)
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        //when a user clicks on cancel, call the followers list again!
-        updateData(on: followers)
-        isSearching        = false //set isSearching to false onece a user cancels
-    }
+    //NOTE:: We do not need this again, same funciton is acheived in the guard let filter statement above
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        //when a user clicks on cancel, call the followers list again!
+//        updateData(on: followers)
+//        isSearching        = false //set isSearching to false onece a user cancels
+//    }
 }
 
 extension FollowerListViewController: FollowerListVCDelegate {
@@ -192,7 +201,8 @@ extension FollowerListViewController: FollowerListVCDelegate {
         page              = 1 //reset page number since it's a brand new member
         followers.removeAll()
         filteredFollowers.removeAll()
-        collectionView.setContentOffset(.zero, animated: true) //scroll collection view back to the top
+        //scroll collection view back to the top
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
         getFollowers(username: username, page: page)
     }
 }
