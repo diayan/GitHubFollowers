@@ -8,7 +8,8 @@
 
 import UIKit
 
-struct UIHelper {
+//We make UIHelper an enum because we don't want to be able to initialize an empty UIHelper
+enum UIHelper {
     
     static func createThreeColumnFlowLayout(in view: UIView) -> UICollectionViewFlowLayout {
         let width                       = view.bounds.width //width of device screen
