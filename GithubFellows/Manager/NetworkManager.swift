@@ -21,7 +21,7 @@ class NetworkManager {
     
     func getFollowers(for username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void) {
         
-        let endpoint = baseURL + "\(username)/followers?per_page=100&page=\(page)"
+        let endpoint  = baseURL + "\(username)/followers?per_page=100&page=\(page)"
         
         guard let url = URL(string: endpoint) else {
             completed(.failure(.invalidUsername))
@@ -30,7 +30,7 @@ class NetworkManager {
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             
-            if let _ = error {
+            if let _   = error {
                 completed(.failure(.unableToComplete))
                 return
             }
@@ -60,7 +60,7 @@ class NetworkManager {
     
     func getUserInfo(for username: String, completed: @escaping (Result<User, GFError>) -> Void) {
         
-        let endpoint = baseURL + "\(username)"
+        let endpoint  = baseURL + "\(username)"
         
         guard let url = URL(string: endpoint) else {
             completed(.failure(.invalidUsername))
@@ -69,7 +69,7 @@ class NetworkManager {
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             
-            if let _ = error {
+            if let _  = error {
                 completed(.failure(.unableToComplete))
                 return
             }
@@ -79,13 +79,13 @@ class NetworkManager {
                 return
             }
             
-            guard let data = data else {
+            guard let data     = data else {
                 completed(.failure(.invalidData))
                 return
             }
             
             do {
-                let decoder = JSONDecoder()
+                let decoder    = JSONDecoder()
                 decoder.keyDecodingStrategy  = .convertFromSnakeCase //converts json from snake case to camelcase
                 decoder.dateDecodingStrategy = .iso8601 //converts string date to standard date 
                 let user                     = try decoder.decode(User.self, from: data)
@@ -101,9 +101,9 @@ class NetworkManager {
     //downloads image into an imageview
     func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
         
-        let cacheKey = NSString(string: urlString)
+        let cacheKey        = NSString(string: urlString)
         //check if image exists, if it does, don't do a network call to download
-        if let image = cache.object(forKey: cacheKey) {
+        if let image        = cache.object(forKey: cacheKey) {
             completed(image)
             return
         }
