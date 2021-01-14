@@ -47,22 +47,26 @@ class FavoritListViewController: GFDataLoadingVC {
             guard let self = self else {return}
             switch result {
             case .success(let favorites):
-                if favorites.isEmpty {
-                    self.showEmptyStateView(with: "No favorites?\n Add one on the follower screen", in: self.view)
-                }else {
-                    self.favorites = favorites
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        //self.view.bringSubviewToFront(self.tableView) //bring back the tableview to the top. similar to z-index
-                    }
-                }
-                
+                self.updateUI(with: favorites)
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }
         }
     }
+    
+    func updateUI(with favorites: [Follower]) {
+        if favorites.isEmpty {
+            self.showEmptyStateView(with: "No favorites?\n Add one on the follower screen", in: self.view)
+        }else {
+            self.favorites = favorites
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                //self.view.bringSubviewToFront(self.tableView) //bring back the tableview to the top. similar to z-index
+            }
+        }
+    }
 }
+
 
 extension FavoritListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,12 +83,11 @@ extension FavoritListViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let favorite    = favorites[indexPath.row]
         let destVC      = FollowerListViewController(username: favorite.login)
-        
         navigationController?.pushViewController(destVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        guard editingStyle == .delete else {return}
+        guard editingStyle  == .delete else {return}
         //remove favorite from persistence
         PersistenceManager.updateWith(favorite: favorites[indexPath.row], actionType: .remove) { [weak self] error in
             guard let self  = self else {return}

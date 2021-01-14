@@ -9,18 +9,14 @@
 import UIKit
 
 class NetworkManager {
+    
     static let shared   = NetworkManager() //initialize network manager
-    private let baseURL         = "https://api.github.com/users/"
-    //implementing caching in for our images
-    let cache           = NSCache<NSString, UIImage>()
+    private let baseURL = "https://api.github.com/users/"
+    let cache           = NSCache<NSString, UIImage>() //implementing caching for to cache our images
     
-    
-    //restrict it to only one instance
-    private init() {}
-    
+    private init() {} //restrict NetworkManager class to only one instance i.e: a singleton
     
     func getFollowers(for username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void) {
-        
         let endpoint  = baseURL + "\(username)/followers?per_page=100&page=\(page)"
         
         guard let url = URL(string: endpoint) else {
@@ -28,9 +24,9 @@ class NetworkManager {
             return
         }
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let task      = URLSession.shared.dataTask(with: url) { data, response, error in
             
-            if let _   = error {
+            if let _  = error {
                 completed(.failure(.unableToComplete))
                 return
             }
@@ -40,13 +36,13 @@ class NetworkManager {
                 return
             }
             
-            guard let data = data else {
+            guard let data     = data else {
                 completed(.failure(.invalidData))
                 return
             }
             
             do {
-                let decoder = JSONDecoder()
+                let decoder   = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase //converts json from snake case to camelcase
                 let followers = try decoder.decode([Follower].self, from: data)
                 completed(.success(followers))
@@ -54,12 +50,10 @@ class NetworkManager {
                 completed(.failure(.invalidData))
             }
         }
-        //this starts the whole network process
-        task.resume()
+        task.resume()//this starts the whole network process
     }
     
     func getUserInfo(for username: String, completed: @escaping (Result<User, GFError>) -> Void) {
-        
         let endpoint  = baseURL + "\(username)"
         
         guard let url = URL(string: endpoint) else {
@@ -94,15 +88,13 @@ class NetworkManager {
                 completed(.failure(.invalidData))
             }
         }
-        //this starts the whole network process
-        task.resume()
+        task.resume()//this starts the whole network process
     }
     
     //downloads image into an imageview
     func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
-        
         let cacheKey        = NSString(string: urlString)
-        //check if image exists, if it does, don't do a network call to download
+        //check if image exists in cache, if it does, don't do a network call to download
         if let image        = cache.object(forKey: cacheKey) {
             completed(image)
             return

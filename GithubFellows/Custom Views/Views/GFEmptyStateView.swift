@@ -40,13 +40,12 @@ class GFEmptyStateView: UIView {
         
         //custom constraints for iPhoneSE and iPhone8Zoomed
         let labelCenterYConstant: CGFloat      = DeviceType.isiPhoneSE || DeviceType.isiPhone8Zoomed  ? -80 : -150
-        let messageLabelCenterYConstraint      = messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: labelCenterYConstant)//this puts it up 150 points above the middle
-        messageLabelCenterYConstraint.isActive = true
         
         NSLayoutConstraint.activate([
             messageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             messageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
-            messageLabel.heightAnchor.constraint(equalToConstant: 200)
+            messageLabel.heightAnchor.constraint(equalToConstant: 200),
+            messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: labelCenterYConstant),//this puts it up 150 points above the middle
         ])
     }
     

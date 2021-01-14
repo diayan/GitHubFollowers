@@ -31,7 +31,7 @@ class GFTextField: UITextField {
         textAlignment      = .center
         font               = UIFont.preferredFont(forTextStyle: .title2)
         adjustsFontSizeToFitWidth = true
-        minimumFontSize = 12
+        minimumFontSize    = 12
         
         backgroundColor    = .tertiarySystemBackground
         autocorrectionType = .no

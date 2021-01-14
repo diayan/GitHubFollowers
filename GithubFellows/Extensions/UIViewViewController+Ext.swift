@@ -17,7 +17,7 @@ extension UIViewController {
             let alertVC = GFAlertViewController(title: title, message: message, buttonTitle: buttonTitle)
             alertVC.modalPresentationStyle  = .overFullScreen
             alertVC.modalTransitionStyle    = .crossDissolve
-            self.present(alertVC, animated: true)//don't have to use weak self in GCD closures
+            self.present(alertVC, animated: true) //don't have to use weak self in GCD closures
         }
     }
     

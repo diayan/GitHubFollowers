@@ -6,7 +6,6 @@
 //  Copyright © 2020 Diayan Siat. All rights reserved.
 //
 
-
 //where a re using child view controllers over a view because:
 //1. They give us access to the lifecycle methods
 //2. They are self contained
@@ -17,7 +16,7 @@ import UIKit
 class GFUserInfoHeaderVC: UIViewController {
     
     let avatarImageView   = GFAvatarImageView(frame: .zero)
-    let userNameLabel         = GFTitleLabel(textAlignment: .left, fontSize: 34)
+    let userNameLabel     = GFTitleLabel(textAlignment: .left, fontSize: 34)
     let nameLabel         = GFSecondaryTitleLabel(fontSize: 18)
     let locationImageView = UIImageView()
     let locationLabel     = GFSecondaryTitleLabel(fontSize: 18)
@@ -56,13 +55,13 @@ class GFUserInfoHeaderVC: UIViewController {
         bioLabel.text          = user.bio ?? "No bio"
         bioLabel.numberOfLines = 3
         
-        locationImageView.image = SFSymbols.location
+        locationImageView.image     = SFSymbols.location
         locationImageView.tintColor = .secondaryLabel
     }
     
     func downloadAvartarImage()  {
         NetworkManager.shared.downloadImage(from: user.avatarUrl) { [weak self] image in
-            guard let self = self else {return}
+            guard let self     = self else {return}
             DispatchQueue.main.async {
                 self.avatarImageView.image = image
             }

@@ -34,8 +34,8 @@ class GFAlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //set the background color to black with an opacity of 0.75
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.75) //set the background color to black with an opacity of 0.75
+        
         configureContainerView()
         configureTitleLabel()
         configureActionButton()
@@ -44,7 +44,6 @@ class GFAlertViewController: UIViewController {
     
     func configureContainerView() {
         view.addSubview(containerView)
-        
         NSLayoutConstraint.activate([
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor), //center vertically
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor), //center horizontally
@@ -55,7 +54,6 @@ class GFAlertViewController: UIViewController {
     
     func configureTitleLabel() {
         containerView.addSubview(titleLabel)
-        
         titleLabel.text = alertTitle ?? "Something went wrong"
         
         NSLayoutConstraint.activate([
@@ -71,7 +69,6 @@ class GFAlertViewController: UIViewController {
         actionButton.setTitle(buttonTitle ?? "Ok", for: .normal)
         
         actionButton.addTarget(self, action: #selector(dismisVC), for: .touchUpInside)
-        
         NSLayoutConstraint.activate([
             actionButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -padding),
             actionButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
@@ -82,7 +79,7 @@ class GFAlertViewController: UIViewController {
     
     func configureMessageLabel() {
         containerView.addSubview(messageLabel)
-        messageLabel.text = message ?? "Unable to complete request"
+        messageLabel.text          = message ?? "Unable to complete request"
         messageLabel.numberOfLines = 4
         
         NSLayoutConstraint.activate([

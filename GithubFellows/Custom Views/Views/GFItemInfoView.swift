@@ -14,6 +14,7 @@ enum itemInfoType {
 }
 
 class GFItemInfoView: UIView {
+    
     let symbolImageView  = UIImageView()
     let titleLabel       = GFTitleLabel(textAlignment: .left, fontSize: 14)
     let countLablel      = GFTitleLabel(textAlignment: .center, fontSize: 14)
@@ -70,8 +71,7 @@ class GFItemInfoView: UIView {
             symbolImageView.image  = SFSymbols.following
             titleLabel.text        = "Following"
         }
-        //count will always be based on what is passed in 
-        countLablel.text           = String(count)
+        countLablel.text           = String(count) //count will always be based on what is passed in
     }
     
 }

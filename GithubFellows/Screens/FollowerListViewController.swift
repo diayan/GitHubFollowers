@@ -63,22 +63,26 @@ class FollowerListViewController: GFDataLoadingVC {
             
             switch result {
             case .success(let user):
-                let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
-                
-                PersistenceManager.updateWith(favorite: favorite, actionType: .add){ [weak self] error in
-                    guard let self = self else { return }
-                    
-                    guard let error = error else {
-                        self.presentGFAlertOnMainThread(title: "Success!", message: "You have successfully added \(user.login) to favorites 🥳.", buttonTitle: "Hooray!")
-                        return
-                    }
-                    self.presentGFAlertOnMainThread(title: "Something went wrong.", message: error.rawValue, buttonTitle: "Ok")
-                }
+                self.addUserToFavorites(user: user)
                 break
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
-            break
+                break
             }
+        }
+    }
+    
+    func addUserToFavorites(user: User) {
+        let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+        
+        PersistenceManager.updateWith(favorite: favorite, actionType: .add){ [weak self] error in
+            guard let self = self else { return }
+            
+            guard let error = error else {
+                self.presentGFAlertOnMainThread(title: "Success!", message: "You have successfully added \(user.login) to favorites 🥳.", buttonTitle: "Hooray!")
+                return
+            }
+            self.presentGFAlertOnMainThread(title: "Something went wrong.", message: error.rawValue, buttonTitle: "Ok")
         }
     }
     
@@ -101,29 +105,34 @@ class FollowerListViewController: GFDataLoadingVC {
     func getFollowers(username: String, page: Int) {
         showLoadingView()
         isLoadingMoreFollowers  = true
-        //[weak self] is a called a capture list
+        //[weak self] is called a capture list
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
             //anytime you make something weak, it becomes an optional
             guard let self      = self else {return}
             self.dismissLoadingView()
+            
             switch result{
             case .success(let followers):
-                if followers.count < 100 {self.hasMoreFollowers = false}
-                self.followers.append(contentsOf: followers)
-                if self.followers.isEmpty {
-                    let message = "\(self.username!) doesn't have any followers. Go follow them 😀."
-                    DispatchQueue.main.async {
-                        self.showEmptyStateView(with: message, in: self.view)
-                        return //after showing an empty view, do nothing else 
-                    }
-                }
-                self.updateData(on: followers)
-
+                self.updateUI(with: followers)
+                
             case .failure(let error ):
                 self.presentGFAlertOnMainThread(title: "Bad stuff happened", message: error.rawValue, buttonTitle: "Ok")
             }
             self.isLoadingMoreFollowers = false
         }
+    }
+    
+    func updateUI(with followers: [Follower]) {
+        if followers.count < 100 {self.hasMoreFollowers = false}
+        self.followers.append(contentsOf: followers)
+        if self.followers.isEmpty {
+            let message = "\(self.username!) doesn't have any followers. Go follow them 😀."
+            DispatchQueue.main.async {
+                self.showEmptyStateView(with: message, in: self.view)
+                return //after showing an empty view, do nothing else
+            }
+        }
+        self.updateData(on: followers)
     }
     
     func configureDataSource() {
@@ -165,7 +174,7 @@ extension FollowerListViewController: UICollectionViewDelegate {
         desVC.delegate      = self
         let navController   = UINavigationController(rootViewController: desVC)
         present(navController, animated: true)
-        }
+    }
 }
 
 extension FollowerListViewController: UISearchResultsUpdating {
@@ -182,11 +191,11 @@ extension FollowerListViewController: UISearchResultsUpdating {
     }
     
     //NOTE:: We do not need this again, same funciton is acheived in the guard let filter statement above
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        //when a user clicks on cancel, call the followers list again!
-//        updateData(on: followers)
-//        isSearching        = false //set isSearching to false onece a user cancels
-//    }
+    //    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    //        //when a user clicks on cancel, call the followers list again!
+    //        updateData(on: followers)
+    //        isSearching        = false //set isSearching to false onece a user cancels
+    //    }
 }
 
 extension FollowerListViewController: UserInfoVCDelegate {
@@ -195,6 +204,7 @@ extension FollowerListViewController: UserInfoVCDelegate {
         self.username     = username
         title             = username
         page              = 1 //reset page number since it's a brand new member
+       
         followers.removeAll()
         filteredFollowers.removeAll()
         //scroll collection view back to the top
