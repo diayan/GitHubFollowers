@@ -1,4 +1,14 @@
 # GitHubFollowers
+The take home project uses the GitHub API to retrieve a users followers and display them in a UICollectionView built programmatically without storyboards and without using any external packages/libraries.
+
+The app has the following scenes: 
+User Search Scene: This is where you search for a GitHub users to retrieve their followers. You could then view a user's profile by clicking on any user, which takes you to a detailed scene with information about their repos, stars, and followers count. You can also find their avatar image, name, bio. 
+You can also add users to favourites which is persisted locally on the device.
+
+Design and UI were fundamental in this project to ensure a smooth and slick way of using GitHubFollowers whilst incorporating some of Apple's latest API's such as Dark Mode, Dynamic Type text, NSDiffableDataSourceSnapshot and Swift 5's Result Type for asynchronous network calls.
+
+This project was part of an online course created by Sean Allen as a take home project.
+
 
 # Search Github User
   <p align="center">
