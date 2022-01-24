@@ -7,8 +7,6 @@ You can also add users to favourites which is persisted locally on the device.
 
 Design and UI were fundamental in this project to ensure a smooth and slick way of using GitHubFollowers whilst incorporating some of Apple's latest API's such as Dark Mode, Dynamic Type text, NSDiffableDataSourceSnapshot and Swift 5's Result Type for asynchronous network calls.
 
-This project was part of an online course created by Sean Allen as a take home project.
-
 
 # Search Github User
   <p align="center">
