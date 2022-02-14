@@ -17,7 +17,8 @@ class GFItemInfoView: UIView {
     
     let symbolImageView  = UIImageView()
     let titleLabel       = GFTitleLabel(textAlignment: .left, fontSize: 14)
-    let countLablel      = GFTitleLabel(textAlignment: .center, fontSize: 14)
+    let countLabel       = GFTitleLabel(textAlignment: .center, fontSize: 14)
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,7 +30,7 @@ class GFItemInfoView: UIView {
     }
     
     private func configure() {
-        addSubviews(titleLabel, countLablel, symbolImageView)
+        addSubviews(titleLabel, countLabel, symbolImageView)
         
         //it is done for only imageview because the others have been done in thir sub-classes
         symbolImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -48,10 +49,10 @@ class GFItemInfoView: UIView {
             titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: 18),
             
-            countLablel.topAnchor.constraint(equalTo: symbolImageView.bottomAnchor, constant: 4),
-            countLablel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            countLablel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            countLablel.heightAnchor.constraint(equalToConstant: 18)
+            countLabel.topAnchor.constraint(equalTo: symbolImageView.bottomAnchor, constant: 4),
+            countLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            countLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            countLabel.heightAnchor.constraint(equalToConstant: 18)
         ])
     }
     
@@ -71,7 +72,7 @@ class GFItemInfoView: UIView {
             symbolImageView.image  = SFSymbols.following
             titleLabel.text        = "Following"
         }
-        countLablel.text           = String(count) //count will always be based on what is passed in
+        countLabel.text           = String(count) //count will always be based on what is passed in
     }
     
 }

@@ -106,7 +106,7 @@ class NetworkManager {
         }
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            //A combined guard let to handle a nil response for all cases. this prevents repeition
+            //A combined guard let to handle a nil response for all cases. this prevents repetition
             guard let self        = self,
                   error           == nil,
                   let response    = response as? HTTPURLResponse, response.statusCode == 200,

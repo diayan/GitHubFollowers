@@ -31,7 +31,7 @@ class UserInfoViewController: UIViewController {
         configureViewController()
         configureScrollView()
         layoutUI()
-        getUserInfor()
+        getUserInfo()
     }
     
     func configureViewController() {
@@ -53,7 +53,7 @@ class UserInfoViewController: UIViewController {
         ])
     }
     
-    func getUserInfor() {
+    func getUserInfo() {
         NetworkManager.shared.getUserInfo(for: username!) { [weak self] result in
             guard let self      = self else {return}
             switch result {

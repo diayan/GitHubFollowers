@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GFEmptyStateView: UIView {
+class GFEmptyStatView: UIView {
     
     let messageLabel = GFTitleLabel(textAlignment: .center, fontSize: 28)
     let logoImageView = UIImageView()

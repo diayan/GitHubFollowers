@@ -68,7 +68,7 @@ class GFAlertViewController: UIViewController {
         containerView.addSubview(actionButton)
         actionButton.setTitle(buttonTitle ?? "Ok", for: .normal)
         
-        actionButton.addTarget(self, action: #selector(dismisVC), for: .touchUpInside)
+        actionButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
         NSLayoutConstraint.activate([
             actionButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -padding),
             actionButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
@@ -89,7 +89,7 @@ class GFAlertViewController: UIViewController {
             messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding)
         ])
     }
-    @objc func dismisVC(){
+    @objc func dismissVC(){
         dismiss(animated: true)
     }
 }
