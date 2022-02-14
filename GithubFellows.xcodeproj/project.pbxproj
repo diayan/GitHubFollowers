@@ -26,6 +26,7 @@
 		B25324CA25A7D0870070B117 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25324C925A7D0870070B117 /* UITableView+Ext.swift */; };
 		B25E6238259BBCBE006A616E /* GFAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25E6237259BBCBE006A616E /* GFAlertContainerView.swift */; };
 		B25E623B259BCCD2006A616E /* GFDataLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25E623A259BCCD2006A616E /* GFDataLoadingVC.swift */; };
+		B29EB79827BAE013009A3CBB /* FollowerListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29EB79727BAE013009A3CBB /* FollowerListViewControllerTests.swift */; };
 		B29F5384258F3B75008AA003 /* GFUserInfoHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29F5383258F3B75008AA003 /* GFUserInfoHeaderVC.swift */; };
 		B2A09BA02559CE3E002235A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A09B9F2559CE3E002235A3 /* AppDelegate.swift */; };
 		B2A09BA22559CE3E002235A3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A09BA12559CE3E002235A3 /* SceneDelegate.swift */; };
@@ -47,6 +48,16 @@
 		B2DDED37258B728F0007EEC3 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DDED36258B728F0007EEC3 /* UIHelper.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B29EB79227BADD9E009A3CBB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2A09B942559CE3E002235A3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2A09B9B2559CE3E002235A3;
+			remoteInfo = GithubFellows;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		B209D6BE25956614004962A1 /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
 		B209D6C125957175004962A1 /* GFItemInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +78,8 @@
 		B25324C925A7D0870070B117 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		B25E6237259BBCBE006A616E /* GFAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertContainerView.swift; sourceTree = "<group>"; };
 		B25E623A259BCCD2006A616E /* GFDataLoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFDataLoadingVC.swift; sourceTree = "<group>"; };
+		B29EB78E27BADD9E009A3CBB /* GithubFellowsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubFellowsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B29EB79727BAE013009A3CBB /* FollowerListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListViewControllerTests.swift; sourceTree = "<group>"; };
 		B29F5383258F3B75008AA003 /* GFUserInfoHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFUserInfoHeaderVC.swift; sourceTree = "<group>"; };
 		B2A09B9C2559CE3E002235A3 /* GithubFellows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubFellows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A09B9F2559CE3E002235A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +104,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B29EB78B27BADD9E009A3CBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B2A09B992559CE3E002235A3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -184,10 +204,19 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		B29EB78F27BADD9E009A3CBB /* GithubFellowsTests */ = {
+			isa = PBXGroup;
+			children = (
+				B29EB79727BAE013009A3CBB /* FollowerListViewControllerTests.swift */,
+			);
+			path = GithubFellowsTests;
+			sourceTree = "<group>";
+		};
 		B2A09B932559CE3E002235A3 = {
 			isa = PBXGroup;
 			children = (
 				B2A09B9E2559CE3E002235A3 /* GithubFellows */,
+				B29EB78F27BADD9E009A3CBB /* GithubFellowsTests */,
 				B2A09B9D2559CE3E002235A3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -196,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				B2A09B9C2559CE3E002235A3 /* GithubFellows.app */,
+				B29EB78E27BADD9E009A3CBB /* GithubFellowsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -294,6 +324,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B29EB78D27BADD9E009A3CBB /* GithubFellowsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B29EB79627BADD9E009A3CBB /* Build configuration list for PBXNativeTarget "GithubFellowsTests" */;
+			buildPhases = (
+				B29EB78A27BADD9E009A3CBB /* Sources */,
+				B29EB78B27BADD9E009A3CBB /* Frameworks */,
+				B29EB78C27BADD9E009A3CBB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B29EB79327BADD9E009A3CBB /* PBXTargetDependency */,
+			);
+			name = GithubFellowsTests;
+			productName = GithubFellowsTests;
+			productReference = B29EB78E27BADD9E009A3CBB /* GithubFellowsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B2A09B9B2559CE3E002235A3 /* GithubFellows */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2A09BB02559CE41002235A3 /* Build configuration list for PBXNativeTarget "GithubFellows" */;
@@ -317,10 +365,15 @@
 		B2A09B942559CE3E002235A3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1160;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "Diayan Siat";
 				TargetAttributes = {
+					B29EB78D27BADD9E009A3CBB = {
+						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
+						TestTargetID = B2A09B9B2559CE3E002235A3;
+					};
 					B2A09B9B2559CE3E002235A3 = {
 						CreatedOnToolsVersion = 11.6;
 					};
@@ -340,11 +393,19 @@
 			projectRoot = "";
 			targets = (
 				B2A09B9B2559CE3E002235A3 /* GithubFellows */,
+				B29EB78D27BADD9E009A3CBB /* GithubFellowsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B29EB78C27BADD9E009A3CBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B2A09B9A2559CE3E002235A3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -357,6 +418,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B29EB78A27BADD9E009A3CBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B29EB79827BAE013009A3CBB /* FollowerListViewControllerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B2A09B982559CE3E002235A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -402,6 +471,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B29EB79327BADD9E009A3CBB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B2A09B9B2559CE3E002235A3 /* GithubFellows */;
+			targetProxy = B29EB79227BADD9E009A3CBB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		B2A09BAA2559CE41002235A3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -414,6 +491,61 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B29EB79427BADD9E009A3CBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9WTXG2G2BJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.diayansiat.GithubFellowsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GithubFellows.app/GithubFellows";
+			};
+			name = Debug;
+		};
+		B29EB79527BADD9E009A3CBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9WTXG2G2BJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.diayansiat.GithubFellowsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GithubFellows.app/GithubFellows";
+			};
+			name = Release;
+		};
 		B2A09BAE2559CE41002235A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -567,6 +699,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B29EB79627BADD9E009A3CBB /* Build configuration list for PBXNativeTarget "GithubFellowsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B29EB79427BADD9E009A3CBB /* Debug */,
+				B29EB79527BADD9E009A3CBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B2A09B972559CE3E002235A3 /* Build configuration list for PBXProject "GithubFellows" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
